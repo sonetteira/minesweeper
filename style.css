@@ -1,0 +1,52 @@
+h1{
+	font-size: 27px;
+	color: #1B251B;
+	text-align: center;
+}
+h2{
+	font-size: 15px;
+	color: #1B251B;
+	text-align: center;
+}
+#tileGrid{
+	border: 2px solid #164016;
+	background-color:#D6DED6;
+	margin-left: auto;
+	margin-right: auto;
+}
+#options table{
+	margin-left: auto;
+	margin-right: auto;
+}
+.buried{
+	background-color: #597A59;
+	width: 20px;
+	height: 20px;
+}
+.blank{
+	background-color: #A4A7A4;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+}
+.mine{
+	background-color: #FF0000;
+	width: 20px;
+	height: 20px;
+}
+.tagged{
+	background-image: url("images/tag.jpg");
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+}
+.info{
+	text-align: center;
+}
+.buttons{
+	text-align: center;
+}
+.buttons button{
+	margin: 5px;
+	padding: 3px;
+}
