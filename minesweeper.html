@@ -1,0 +1,75 @@
+<head>
+<!--This is a minesweeper game, written by Leanne Keeley for her own use.-->
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="msFunctions.js"></script>
+</head>
+<body oncontextmenu="return false;">
+<h1>Minesweeper</h1>
+<h2>Number of Tiles: <span id="tiles"></span><br />
+Number of Mines: <span id="mines"></span></h2>
+<!---output grid--->
+<div id="grid"></div>
+<h2>Time = <span id="time">0</span> sec</h2>
+<h2 id="finalMessage"></h2>
+<div class="buttons">
+<button onclick="newGame();">New Game</button><button onclick="options();">Options</button>
+</div>
+<br /><br />
+<div id="options"></div>
+<p id="debug"></p>
+<script>
+//var numTiles = 16;
+var gameOn = false;
+var t;
+var timer = 0;
+setInterval(function () {document.getElementById("time").innerHTML = timer}, 1000);
+if(timer == 999)
+{
+	stopTimer();
+}
+var gameOver;
+var rows = 9;
+var cols = 9;
+var numMines = 10;
+var numTiles;
+var minesLeft;
+var tileArray = new Array();
+function buildGame()
+{
+	numTiles = rows*cols;
+	gameOver = false;
+	//calculate the number of rows and mines
+	//rows = calculateRows(numTiles);
+	//cols = numTiles/rows;
+	//numMines = calculateMines(numTiles);
+	//document.getElementById("debug").innerHTML = cols;
+	minesLeft = numMines;
+	tileArray = new Array();
+	for(i=1; i<=numTiles; i++) //create a tileAray of the specified number of tile objects each with status, live, and tagged attributes with the value of false, blank position, and minesAdjacent of 0.
+	{
+		tileArray[i] = createTile(); //note: indexing starts at 1 not 0.
+		tileArray[i].position = calculatePosition(i);
+	}
+	var hotTiles = randomNumbers(numTiles, numMines); //create an array of random numbers to define the tiles which are mines
+	for(i=0; i<hotTiles.length; i++) //apply the randomly chosen mines to the grid
+	{
+		tileArray[hotTiles[i]].live = true;
+	}
+	//calculate how many mines each tile is touching.
+	var minesTouched;
+	for(i=1; i<tileArray.length; i++)
+	{
+		if(!tileArray[i].live) //This tile is not a mine
+		{
+			minesTouched = calculateNumber(i);
+			tileArray[i].minesAdjacent = minesTouched;
+		}
+	}
+	document.getElementById("grid").innerHTML = buildGrid();
+	document.getElementById("tiles").innerHTML = numTiles;
+	document.getElementById("mines").innerHTML = numMines;
+}
+buildGame();
+//document.getElementById("debug").innerHTML = "hello";
+</script>
+</body>
