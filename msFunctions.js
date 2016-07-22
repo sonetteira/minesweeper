@@ -446,7 +446,7 @@ function endGame(gameWon)
 function newGame()
 {
 	//document.getElementById("debug").innerHTML = "new game";
-	stopTimer();
+	//stopTimer();
 	gameOn = false;
 	timer = 0;
 	gameOver = false;
@@ -479,7 +479,7 @@ function resetGrid(r, c, m)
 
 function startTimer()
 {
-	t = setInterval(timeCounter, 1000);
+	t = setInterval(function () {timeCounter()}, 1000);
 	gameOn = true; //boolean to indicate that a timer is started
 	//document.getElementById("debug").innerHTML = "start timer:" + t;
 }
@@ -491,7 +491,8 @@ function timeCounter()
 
 function stopTimer()
 {
-	//document.getElementById("debug").innerHTML = "stop timer: " + t;
-	if(!gameOn) //if no timer has been started, don't try to stop one.
-	{	clearInterval(t); }
+	//document.getElementById("debug").innerHTML = "stop timer: " + t + " " + timer;
+	//if(!gameOn) {//if no timer has been started, don't try to stop one.
+	clearInterval(t); 
+	//}
 }
