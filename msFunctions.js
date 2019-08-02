@@ -307,9 +307,7 @@ function buildGrid()
 				else
 				{
 					//display the number of mines the tile is touching
-					output = output.concat('<td class="blank">');
-					output = output.concat(tileArray[n].minesAdjacent);
-					output = output.concat('</td>');
+					output = output.concat('<td class="blank no',tileArray[n].minesAdjacent,'">',tileArray[n].minesAdjacent,'</td>');
 				}
 			}
 			else
