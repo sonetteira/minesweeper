@@ -343,7 +343,7 @@ function mouseDown1(e, tile) {
 			endGame(false);
 		}		
 		else if(tileArray[tile].minesAdjacent == 0) {
-			blankTileClick(0, tile);
+			blankTileClick(tile);
 		}
 		break;
     case 3: //right click
@@ -377,7 +377,7 @@ function mouseDown2(e, tile) {
   document.getElementById("grid").innerHTML = buildGrid();
 }
 
-function blankTileClick(a, c)
+function blankTileClick(c)
 {
 	var tiles = adjacent(c);
 	tileArray[c].check = true;
@@ -387,7 +387,7 @@ function blankTileClick(a, c)
 		tileArray[tiles[i]].status = true;
 		if(tileArray[tiles[i]].minesAdjacent == 0 && tileArray[tiles[i]].check == false)
 		{
-			blankTileClick(a+1, tiles[i]);
+			blankTileClick(tiles[i]);
 		}
 	}
 }
