@@ -307,9 +307,7 @@ function buildGrid()
 				else
 				{
 					//display the number of mines the tile is touching
-					output = output.concat('<td class="blank">');
-					output = output.concat(tileArray[n].minesAdjacent);
-					output = output.concat('</td>');
+					output = output.concat('<td class="blank no',tileArray[n].minesAdjacent,'">',tileArray[n].minesAdjacent,'</td>');
 				}
 			}
 			else
@@ -343,7 +341,7 @@ function mouseDown1(e, tile) {
 			endGame(false);
 		}		
 		else if(tileArray[tile].minesAdjacent == 0) {
-			blankTileClick(0, tile);
+			blankTileClick(tile);
 		}
 		break;
     case 3: //right click
@@ -377,7 +375,7 @@ function mouseDown2(e, tile) {
   document.getElementById("grid").innerHTML = buildGrid();
 }
 
-function blankTileClick(a, c)
+function blankTileClick(c)
 {
 	var tiles = adjacent(c);
 	tileArray[c].check = true;
@@ -387,7 +385,7 @@ function blankTileClick(a, c)
 		tileArray[tiles[i]].status = true;
 		if(tileArray[tiles[i]].minesAdjacent == 0 && tileArray[tiles[i]].check == false)
 		{
-			blankTileClick(a+1, tiles[i]);
+			blankTileClick(tiles[i]);
 		}
 	}
 }
@@ -448,6 +446,7 @@ function newGame()
 	//document.getElementById("debug").innerHTML = "new game";
 	//stopTimer();
 	gameOn = false;
+	stopTimer();
 	timer = 0;
 	gameOver = false;
 	document.getElementById("finalMessage").innerHTML = "";
@@ -486,6 +485,10 @@ function startTimer()
 
 function timeCounter()
 {
+	if(timer == 999) {
+		stopTimer(); 
+		return;
+	}
 	timer++;
 }
 

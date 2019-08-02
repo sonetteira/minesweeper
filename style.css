@@ -28,6 +28,7 @@ h2{
 	width: 20px;
 	height: 20px;
 	text-align: center;
+	font-weight: bold;
 }
 .mine{
 	background-color: #FF0000;
@@ -50,3 +51,12 @@ h2{
 	margin: 5px;
 	padding: 3px;
 }
+
+.no1 {color: blue;}
+.no2 {color: green;}
+.no3 {color: red;}
+.no4 {color: navy;}
+.no5 {color: maroon;}
+.no6 {color: teal;}
+.no7 {color: black;}
+.no8 {color: grey;}
