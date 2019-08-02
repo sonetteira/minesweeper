@@ -448,6 +448,7 @@ function newGame()
 	//document.getElementById("debug").innerHTML = "new game";
 	//stopTimer();
 	gameOn = false;
+	stopTimer();
 	timer = 0;
 	gameOver = false;
 	document.getElementById("finalMessage").innerHTML = "";
