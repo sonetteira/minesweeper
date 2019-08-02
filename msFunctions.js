@@ -485,6 +485,10 @@ function startTimer()
 
 function timeCounter()
 {
+	if(timer == 999) {
+		stopTimer(); 
+		return;
+	}
 	timer++;
 }
 
